@@ -1,0 +1,65 @@
+rules:
+
+  - rule_code: DR001_BRUTE_FORCE
+    version: 1
+    title: Repeated failed authentication from a single source
+    technique_id: T1110
+    base_severity: medium
+    params:
+      failures: 15
+      window_minutes: 5
+
+  - rule_code: DR002_IMPOSSIBLE_TRAVEL
+    version: 1
+    title: Successful logins from impossible locations
+    technique_id: T1078
+    base_severity: high
+    params:
+      max_kph: 900
+
+  - rule_code: DR003_LSASS_ACCESS
+    version: 1
+    title: Non-system process opened a handle to LSASS
+    technique_id: T1003.001
+    base_severity: critical
+    params: {}
+
+  - rule_code: DR004_ENCODED_POWERSHELL
+    version: 1
+    title: PowerShell executed with an encoded command
+    technique_id: T1059.001
+    base_severity: high
+    params:
+      min_length: 120
+
+  - rule_code: DR005_DNS_TUNNEL
+    version: 1
+    title: Anomalous DNS volume and entropy to a single domain
+    technique_id: T1071.004
+    base_severity: high
+    params:
+      queries_per_minute: 60
+      min_entropy: 3.5
+
+  - rule_code: DR006_CLOUD_KEY_CREATED
+    version: 1
+    title: New access key created for a privileged identity
+    technique_id: T1098
+    base_severity: medium
+    params: {}
+
+  - rule_code: DR007_PORT_SCAN
+    version: 1
+    title: Single source contacted many ports on many hosts
+    technique_id: T1046
+    base_severity: low
+    params:
+      unique_ports: 50
+
+  - rule_code: DR008_LARGE_EGRESS
+    version: 1
+    title: Unusual outbound data volume to an external address
+    technique_id: T1041
+    base_severity: high
+    params:
+      mb_threshold: 500

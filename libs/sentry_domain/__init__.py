@@ -1,0 +1,1 @@
+"""CyberSentry pure domain library."""

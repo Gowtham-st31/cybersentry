@@ -1,0 +1,44 @@
+{
+  "index_patterns": ["sentry-events-*"],
+  "template": {
+    "settings": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0
+    },
+    "mappings": {
+      "dynamic": true,
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "event_id": {
+          "type": "keyword"
+        },
+        "event_type": {
+          "type": "keyword"
+        },
+        "host_id": {
+          "type": "keyword"
+        },
+        "user_name": {
+          "type": "keyword"
+        },
+        "source_ip": {
+          "type": "ip"
+        },
+        "destination_ip": {
+          "type": "ip"
+        },
+        "rule_code": {
+          "type": "keyword"
+        },
+        "severity": {
+          "type": "keyword"
+        },
+        "message": {
+          "type": "text"
+        }
+      }
+    }
+  }
+}

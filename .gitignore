@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Docker
+*.pid
+
+# Data
+data/*.csv
+data/*.json
+data/*.jsonl
+# MLflow
+mlruns/
+
+# Secrets
+*.pem
+*.key
