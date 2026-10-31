@@ -1,0 +1,24 @@
+# docker-compose.mlflow.yml - layered on the M1 stack:
+#   docker compose -f docker-compose.yml -f docker-compose.mlflow.yml up -d mlflow
+services:
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.17.2
+    container_name: cybersentry-mlflow
+    depends_on: [postgres]
+    environment:
+      MLFLOW_BACKEND_STORE_URI: postgresql://${POSTGRES_USER:-sentry}:${POSTGRES_PASSWORD:-sentry_dev_2026}@postgres:5432/mlflow
+    command: >
+      bash -c "pip install --quiet psycopg2-binary &&
+      mlflow server --host 0.0.0.0 --port 5000
+      --backend-store-uri postgresql://${POSTGRES_USER:-sentry}:${POSTGRES_PASSWORD:-sentry_dev_2026}@postgres:5432/mlflow
+      --default-artifact-root /mlflow-artifacts --serve-artifacts"
+    ports: ["5000:5000"]
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - import urllib.request as u; u.urlopen('http://localhost:5000/health')
+      interval: 15s
+      retries: 10
+
