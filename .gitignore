@@ -38,3 +38,13 @@ mlruns/
 # Secrets
 *.pem
 *.key
+
+# M2 additions
+data/processed/
+artifacts/
+reports/
+mlruns/
+
+*.db
+mlartifacts/
+configs/train.best.yaml
